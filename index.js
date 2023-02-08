@@ -1,4 +1,3 @@
-
 import './style.css';
 
 const scene = new THREE.Scene();
@@ -7,8 +6,8 @@ const hemisphereLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4);
 scene.add(hemisphereLight);
 
 const spotLight = new THREE.SpotLight(0xffffff, 8);
-spotLight.position.set(0,50,150);
-spotLight.angle = Math.PI/5;
+spotLight.position.set(0, 50, 150);
+spotLight.angle = Math.PI / 5;
 spotLight.penumbra = 1;
 spotLight.decay = 1;
 spotLight.shadow.bias = -0.0001;
@@ -52,7 +51,7 @@ controls.enableDamping = true;
 
 const loader = new THREE.GLTFLoader();
 loader.load(
-  "https://assets.codepen.io/4217721/the_cantilever.glb",
+  'https://assets.codepen.io/4217721/the_cantilever.glb',
   function (gltf) {
     const model = gltf.scene;
     model.traverse((node) => {
@@ -80,25 +79,25 @@ loader.load(
 
     camera.position.x += size * 1.1;
     camera.position.y += size / 5;
-    camera.position.z += (size - 1000)/5;
+    camera.position.z += (size - 1000) / 5;
     camera.lookAt(center);
 
     controls.maxDistance = size * 1.3;
     controls.minDistance = size / 1.3;
-  //   controls.enableZoom = false;
+    //   controls.enableZoom = false;
     controls.update();
 
     scene.add(model);
   },
   (xhr) => {
-    console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
   },
   (error) => {
     console.log(error);
   }
 );
 
-window.addEventListener("resize", onWindowResize, false);
+window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
